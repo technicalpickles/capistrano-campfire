@@ -1,7 +1,11 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
-describe "CapistranoTinder" do
-  it "fails" do
-    fail "hey buddy, you should probably rename this file and start specing for real"
+describe Capistrano::Campfire do
+  let :configuration do
+    config = Capistrano::Configuration.new
+    configuration.extend(Capistrano::Spec::ConfigurationExtension)
+    Moonshine::CapistranoIntegration.load_into(@configuration)
   end
+
+  it "populates :campfire_room"
 end

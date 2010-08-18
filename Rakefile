@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "capistrano-tinder"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Post to Campfire from capistrano}
+    gem.description = %Q{ capistrano-tinder is a very simple library for making a Campfire room accessible from capistrano. All it does is provide said access, and nothing more, preferring to let other gems do that trickery.  }
     gem.email = "josh@technicalpickles.com"
     gem.homepage = "http://github.com/technicalpickles/capistrano-tinder"
     gem.authors = ["Joshua Nichols"]
