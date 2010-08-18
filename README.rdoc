@@ -4,7 +4,11 @@ capistrano-campfire is a really tiny library to expose a Campfire room to Capist
 
 Specifically, you configure some `campfire_options` about the room, and then you magically get access to a `campfire_room`. It's just a `Tinder::Campfire` instance, so you can do whatever you would normally with that.
 
-Here's a quick example for your `config/deploy.rb`:
+Install it the usual way:
+
+    gem install capistrano-campfire
+
+And here's a quick example for your `config/deploy.rb`:
 
     require 'capistrano/campfire'
     

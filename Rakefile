@@ -4,11 +4,11 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "capistrano-tinder"
+    gem.name = "capistrano-campfire"
     gem.summary = %Q{Post to Campfire from capistrano}
     gem.description = %Q{ capistrano-tinder is a very simple library for making a Campfire room accessible from capistrano. All it does is provide said access, and nothing more, preferring to let other gems do that trickery.  }
     gem.email = "josh@technicalpickles.com"
-    gem.homepage = "http://github.com/technicalpickles/capistrano-tinder"
+    gem.homepage = "http://github.com/technicalpickles/capistrano-campfire"
     gem.authors = ["Joshua Nichols"]
     gem.add_development_dependency "rspec", ">= 1.2.9"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
