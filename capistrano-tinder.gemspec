@@ -14,30 +14,29 @@ Gem::Specification.new do |s|
   s.email = %q{josh@technicalpickles.com}
   s.extra_rdoc_files = [
     "LICENSE",
-     "README.rdoc"
+    "README.rdoc"
   ]
   s.files = [
     ".document",
-     ".gitignore",
-     "LICENSE",
-     "README.rdoc",
-     "Rakefile",
-     "VERSION",
-     "capistrano-tinder.gemspec",
-     "lib/capistrano-campfire.rb",
-     "lib/capistrano/campfire.rb",
-     "spec/capistrano-tinder_spec.rb",
-     "spec/spec.opts",
-     "spec/spec_helper.rb"
+    ".gitignore",
+    "LICENSE",
+    "README.rdoc",
+    "Rakefile",
+    "VERSION",
+    "capistrano-tinder.gemspec",
+    "lib/capistrano-campfire.rb",
+    "lib/capistrano/campfire.rb",
+    "spec/capistrano-tinder_spec.rb",
+    "spec/spec.opts",
+    "spec/spec_helper.rb"
   ]
   s.homepage = %q{http://github.com/technicalpickles/capistrano-tinder}
-  s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.6}
   s.summary = %q{Post to Campfire from capistrano}
   s.test_files = [
     "spec/capistrano-tinder_spec.rb",
-     "spec/spec_helper.rb"
+    "spec/spec_helper.rb"
   ]
 
   if s.respond_to? :specification_version then
