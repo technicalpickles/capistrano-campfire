@@ -1,1 +1,1 @@
-require 'capistrano/tinder'
+require 'capistrano/campfire'
