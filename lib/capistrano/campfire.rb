@@ -2,8 +2,8 @@ require 'capistrano'
 require 'tinder'
 
 module Capistrano
-  class Campfire
-    def self.load_into(configuration)
+  module Campfire
+    def self.extended(configuration)
       configuration.load do
         set :campfire_options, {}
 
@@ -27,6 +27,6 @@ module Capistrano
 end
 
 if Capistrano::Configuration.instance
-  Capistrano::Campfire.load_into(Capistrano::Configuration.instance)
+  Capistrano::Configuration.instance.extend(Capistrano::Campfire)
 end
 

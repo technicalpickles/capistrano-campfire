@@ -5,7 +5,7 @@ describe Capistrano::Campfire do
     config = Capistrano::Configuration.new
 
     config.extend(Capistrano::Spec::ConfigurationExtension)
-    Capistrano::Campfire.load_into(config)
+    config.extend(Capistrano::Campfire)
 
     config
   end
