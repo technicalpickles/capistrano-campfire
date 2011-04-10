@@ -1,4 +1,5 @@
 require 'capistrano'
+require 'tinder'
 
 module Capistrano
   class Campfire
@@ -7,7 +8,6 @@ module Capistrano
         set :campfire_options, {}
 
         set :campfire_room do
-          require 'tinder'
 
           account = campfire_options[:account]
           token = campfire_options[:token]
