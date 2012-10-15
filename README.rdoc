@@ -22,6 +22,28 @@ And here's a quick example for your `config/deploy.rb`:
       campfire_room.speak 'o hai'
     end
 
+
+You can also be posting to multiple campfire rooms/accounts.
+
+    require 'capistrano/campfire'
+    
+    set :campfire_options, :rooms => [{
+                                       :account => 'zim',
+                                       :room => 'World Conquest',
+                                       :token => '001000101110101001011112',
+                                     }, {
+                                       :account => 'swolleneyeballnetwork',
+                                       :room => 'Agents',
+                                       :token => '2001000101110101001011110',
+                                     }],
+                           :ssl => true
+    
+    
+    task :ohai do
+      campfire_rooms.speak 'o hai'
+    end
+
+
 == Note on Patches/Pull Requests
  
 * Fork the project.
