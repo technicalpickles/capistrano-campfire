@@ -25,7 +25,7 @@ describe Capistrano::Campfire do
       }
 
       campfire = stub("campfire")
-      ::Tinder::Campfire.should_receive(:new).with("awesomellc", :token => "yyz123", :ssl => true).and_return(campfire)
+      ::Tinder::Campfire.should_receive(:new).with("awesomellc", :token => "yyz123", :ssl => true, :ssl_verify => nil).and_return(campfire)
 
       room = stub("room")
       campfire.should_receive(:find_room_by_name).with("General Awesomeness").and_return(room)
