@@ -7,6 +7,12 @@ module Capistrano
       def initialize(campfire_options)
         rooms_options = campfire_options[:rooms]
 
+        # if no rooms specified, let's assume the campfire_options has everything
+        # so let's fake it
+        unless rooms_options
+          rooms_options = [{}]
+        end
+
         @rooms = rooms_options.map do |room_options|
           account = room_options[:account] || campfire_options[:account]
           token = room_options[:token] || campfire_options[:token]
@@ -35,19 +41,7 @@ module Capistrano
         set :campfire_options, {}
 
         set :campfire_room do
-
-          account = campfire_options[:account]
-          token = campfire_options[:token]
-          ssl = campfire_options[:ssl]
-          ssl_verify = campfire_options[:ssl_verify]
-          room_name = campfire_options[:room]
-
-          campfire = ::Tinder::Campfire.new account,
-            :token => token,
-            :ssl => ssl,
-            :ssl_verify => ssl_verify
-
-          campfire.find_room_by_name(room_name)
+          RoomCollection.new(campfire_options)
         end
 
         set :campfire_rooms do

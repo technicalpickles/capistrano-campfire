@@ -24,16 +24,17 @@ describe Capistrano::Campfire do
           :ssl => true,
           :room => "General Awesomeness"
         }
+
+        @campfire = stub("campfire")
+        ::Tinder::Campfire.should_receive(:new).with("awesomellc", :token => "yyz123", :ssl => true, :ssl_verify => nil).and_return(@campfire)
+
+        @room = stub("room")
+        @campfire.should_receive(:find_room_by_name).with("General Awesomeness").and_return(@room)
+
       end
 
-      it "sends messages to single room using `campfire_room.speak`" do
-        campfire = stub("campfire")
-        ::Tinder::Campfire.should_receive(:new).with("awesomellc", :token => "yyz123", :ssl => true, :ssl_verify => nil).and_return(campfire)
-
-        room = stub("room")
-        campfire.should_receive(:find_room_by_name).with("General Awesomeness").and_return(room)
-
-        room.should_receive(:speak).with("IMPENDING DOOM")
+      it "speaks in a single room using `campfire_room.speak`" do
+        @room.should_receive(:speak).with("IMPENDING DOOM")
 
         configuration.campfire_room.speak "IMPENDING DOOM"
       end
@@ -52,33 +53,26 @@ describe Capistrano::Campfire do
                                                          :token => '2001000101110101001011110'
                                                        }],
                                              :ssl => true
+        @zim_campfire = stub("zim_campfire")
+        ::Tinder::Campfire.should_receive(:new).with('zim', :token => '001000101110101001011112', :ssl => true, :ssl_verify => nil).and_return(@zim_campfire)
+
+        @world_conquest_room = stub("world_conquest_room")
+        @zim_campfire.should_receive(:find_room_by_name).with("World Conquest").and_return(@world_conquest_room)
+
+        @swolleneyeballnetwork_campfire = stub("swolleneyeballnetwork_campfire")
+        ::Tinder::Campfire.should_receive(:new).with('swolleneyeballnetwork', :token => '2001000101110101001011110', :ssl => true, :ssl_verify => nil).and_return(@swolleneyeballnetwork_campfire)
+
+        @agents_room = stub("agents_room")
+        @swolleneyeballnetwork_campfire.should_receive(:find_room_by_name).with("Agents").and_return(@agents_room)
       end
 
-      it "sends messages to all rooms using `campfire_rooms.speak`" do
-        zim_campfire = stub("zim_campfire")
-        ::Tinder::Campfire.should_receive(:new).with('zim', :token => '001000101110101001011112', :ssl => true, :ssl_verify => nil).and_return(zim_campfire)
-
-
-        world_conquest_room = stub("world_conquest_room")
-        zim_campfire.should_receive(:find_room_by_name).with("World Conquest").and_return(world_conquest_room)
-
-
-        swolleneyeballnetwork_campfire = stub("swolleneyeballnetwork_campfire")
-        ::Tinder::Campfire.should_receive(:new).with('swolleneyeballnetwork', :token => '2001000101110101001011110', :ssl => true, :ssl_verify => nil).and_return(swolleneyeballnetwork_campfire)
-
-
-        agents_room = stub("agents_room")
-        swolleneyeballnetwork_campfire.should_receive(:find_room_by_name).with("Agents").and_return(agents_room)
-
-
-        world_conquest_room.should_receive(:speak).with("DOOM IMPENDING")
-        agents_room.should_receive(:speak).with("DOOM IMPENDING")
+      it "speaks in all rooms using `campfire_rooms.speak`" do
+        @world_conquest_room.should_receive(:speak).with("DOOM IMPENDING")
+        @agents_room.should_receive(:speak).with("DOOM IMPENDING")
 
         configuration.campfire_rooms.speak "DOOM IMPENDING"
       end
     end
-
-
   end
 
 end
