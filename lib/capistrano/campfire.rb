@@ -34,6 +34,18 @@ module Capistrano
           room.speak message
         end
       end
+
+      def paste(message)
+        @rooms.each do |room|
+          room.paste message
+        end
+      end
+
+      def play(message)
+        @rooms.each do |room|
+          room.play message
+        end
+      end
     end
 
     def self.extended(configuration)

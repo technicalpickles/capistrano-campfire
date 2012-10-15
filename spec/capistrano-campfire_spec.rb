@@ -39,6 +39,18 @@ describe Capistrano::Campfire do
         configuration.campfire_room.speak "IMPENDING DOOM"
       end
 
+      it "pastes in a single room using `campfire_room.paste`" do
+        @room.should_receive(:paste).with("IMPENDING DOOM")
+
+        configuration.campfire_room.paste "IMPENDING DOOM"
+      end
+
+      it "plays in a single room using `campfire_room.play`" do
+        @room.should_receive(:play).with("IMPENDING DOOM")
+
+        configuration.campfire_room.play "IMPENDING DOOM"
+      end
+
     end
 
     context "with configuration for multiple rooms" do
@@ -71,6 +83,20 @@ describe Capistrano::Campfire do
         @agents_room.should_receive(:speak).with("DOOM IMPENDING")
 
         configuration.campfire_rooms.speak "DOOM IMPENDING"
+      end
+
+      it "pastes in all rooms using `campfire_rooms.paste`" do
+        @world_conquest_room.should_receive(:paste).with("DOOM IMPENDING")
+        @agents_room.should_receive(:paste).with("DOOM IMPENDING")
+
+        configuration.campfire_rooms.paste "DOOM IMPENDING"
+      end
+
+      it "plays in all rooms using `campfire_rooms.plays`" do
+        @world_conquest_room.should_receive(:play).with("DOOM IMPENDING")
+        @agents_room.should_receive(:play).with("DOOM IMPENDING")
+
+        configuration.campfire_rooms.play "DOOM IMPENDING"
       end
     end
   end
