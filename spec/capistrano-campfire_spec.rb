@@ -16,6 +16,44 @@ describe Capistrano::Campfire do
       configuration.campfire_options.should == {}
     end
 
+
+    context "with configuration for a single room (by room_id)" do
+      before do
+        configuration.set :campfire_options, {
+          :account => "awesomellc",
+          :token => "yyz123",
+          :ssl => true,
+          :room_id => 1
+        }
+
+        @campfire = stub("campfire")
+        ::Tinder::Campfire.should_receive(:new).with("awesomellc", :token => "yyz123", :ssl => true, :ssl_verify => nil).and_return(@campfire)
+
+        @room = stub("room")
+        @campfire.should_receive(:find_room_by_id).with(1).and_return(@room)
+
+      end
+
+      it "speaks in a single room using `campfire_room.speak`" do
+        @room.should_receive(:speak).with("IMPENDING DOOM")
+
+        configuration.campfire_room.speak "IMPENDING DOOM"
+      end
+
+      it "pastes in a single room using `campfire_room.paste`" do
+        @room.should_receive(:paste).with("IMPENDING DOOM")
+
+        configuration.campfire_room.paste "IMPENDING DOOM"
+      end
+
+      it "plays in a single room using `campfire_room.play`" do
+        @room.should_receive(:play).with("IMPENDING DOOM")
+
+        configuration.campfire_room.play "IMPENDING DOOM"
+      end
+
+    end
+
     context "with configuration for a single room" do
       before do
         configuration.set :campfire_options, {

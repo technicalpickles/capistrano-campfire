@@ -11,13 +11,13 @@ Install it the usual way:
 And here's a quick example for your `config/deploy.rb`:
 
     require 'capistrano/campfire'
-    
+
     set :campfire_options, :account => 'zim',
                            :room => 'World Conquest',
                            :token => '001000101110101001011112',
                            :ssl => true
-    
-    
+
+
     task :ohai do
       campfire_room.speak 'o hai'
     end
@@ -26,7 +26,7 @@ And here's a quick example for your `config/deploy.rb`:
 You can also be posting to multiple campfire rooms/accounts.
 
     require 'capistrano/campfire'
-    
+
     set :campfire_options, :rooms => [{
                                        :account => 'zim',
                                        :room => 'World Conquest',
@@ -37,15 +37,18 @@ You can also be posting to multiple campfire rooms/accounts.
                                        :token => '2001000101110101001011110',
                                      }],
                            :ssl => true
-    
-    
+
+
     task :ohai do
       campfire_rooms.speak 'o hai'
     end
 
 
+Instead of `room` option, you can pass the `room_id` if your room name contains some special characters.
+
+
 == Note on Patches/Pull Requests
- 
+
 * Fork the project.
 * Make your feature addition or bug fix.
 * Add tests for it. This is important so I don't break it in a
