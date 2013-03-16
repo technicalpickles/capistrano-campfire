@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "capistrano-campfire"
-  s.version = "0.2.0"
+  s.version = "0.2.1"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Joshua Nichols"]
-  s.date = "2012-10-15"
+  s.date = "2013-03-16"
   s.description = " capistrano-tinder is a very simple library for making a Campfire room accessible from capistrano. All it does is provide said access, and nothing more, preferring to let other gems do that trickery.  "
   s.email = "josh@technicalpickles.com"
   s.extra_rdoc_files = [
@@ -25,7 +25,6 @@ Gem::Specification.new do |s|
     "Rakefile",
     "VERSION",
     "capistrano-campfire.gemspec",
-    "capistrano-tinder.gemspec",
     "lib/capistrano-campfire.rb",
     "lib/capistrano/campfire.rb",
     "spec/capistrano-campfire_spec.rb",
@@ -34,7 +33,7 @@ Gem::Specification.new do |s|
   ]
   s.homepage = "http://github.com/technicalpickles/capistrano-campfire"
   s.require_paths = ["lib"]
-  s.rubygems_version = "1.8.10"
+  s.rubygems_version = "1.8.23"
   s.summary = "Post to Campfire from capistrano"
 
   if s.respond_to? :specification_version then
