@@ -19,13 +19,21 @@ module Capistrano
           ssl = room_options[:ssl] || campfire_options[:ssl]
           ssl_verify = room_options[:ssl_verify] || campfire_options[:ssl_verify]
           room_name = room_options[:room] || campfire_options[:room]
+          room_id = room_options[:room] || campfire_options[:room_id]
 
 
           campfire = ::Tinder::Campfire.new account,
             :token => token,
             :ssl => ssl,
             :ssl_verify => ssl_verify
-          campfire.find_room_by_name(room_name)
+
+          if room_name
+            campfire.find_room_by_name(room_name)
+          elsif room_id
+            campfire.find_room_by_id(room_id)
+          else
+            raise "Please, specify room name or room_id for your Campfire room"
+          end
         end
       end
 
