@@ -1,4 +1,4 @@
-require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
+require "spec_helper"
 
 describe Capistrano::Campfire do
   let :configuration do
@@ -26,10 +26,10 @@ describe Capistrano::Campfire do
           :room_id => 1
         }
 
-        @campfire = stub("campfire")
+        @campfire = double("campfire")
         ::Tinder::Campfire.should_receive(:new).with("awesomellc", :token => "yyz123", :ssl => true, :ssl_verify => nil).and_return(@campfire)
 
-        @room = stub("room")
+        @room = double("room")
         @campfire.should_receive(:find_room_by_id).with(1).and_return(@room)
 
       end
@@ -63,10 +63,10 @@ describe Capistrano::Campfire do
           :room => "General Awesomeness"
         }
 
-        @campfire = stub("campfire")
+        @campfire = double("campfire")
         ::Tinder::Campfire.should_receive(:new).with("awesomellc", :token => "yyz123", :ssl => true, :ssl_verify => nil).and_return(@campfire)
 
-        @room = stub("room")
+        @room = double("room")
         @campfire.should_receive(:find_room_by_name).with("General Awesomeness").and_return(@room)
 
       end
@@ -103,16 +103,16 @@ describe Capistrano::Campfire do
                                                          :token => '2001000101110101001011110'
                                                        }],
                                              :ssl => true
-        @zim_campfire = stub("zim_campfire")
+        @zim_campfire = double("zim_campfire")
         ::Tinder::Campfire.should_receive(:new).with('zim', :token => '001000101110101001011112', :ssl => true, :ssl_verify => nil).and_return(@zim_campfire)
 
-        @world_conquest_room = stub("world_conquest_room")
+        @world_conquest_room = double("world_conquest_room")
         @zim_campfire.should_receive(:find_room_by_name).with("World Conquest").and_return(@world_conquest_room)
 
-        @swolleneyeballnetwork_campfire = stub("swolleneyeballnetwork_campfire")
+        @swolleneyeballnetwork_campfire = double("swolleneyeballnetwork_campfire")
         ::Tinder::Campfire.should_receive(:new).with('swolleneyeballnetwork', :token => '2001000101110101001011110', :ssl => true, :ssl_verify => nil).and_return(@swolleneyeballnetwork_campfire)
 
-        @agents_room = stub("agents_room")
+        @agents_room = double("agents_room")
         @swolleneyeballnetwork_campfire.should_receive(:find_room_by_name).with("Agents").and_return(@agents_room)
       end
 
