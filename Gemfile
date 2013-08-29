@@ -1,10 +1,5 @@
-source :rubygems
+source "https://rubygems.org"
 
-gem 'capistrano'
-gem 'tinder'
 
-group :development do
-  gem 'rspec', '~> 1.2.9'
-  gem 'jeweler'
-  gem 'capistrano-spec'
-end
+# Specify your gem's dependencies in capistrano-campfire.gemspec
+gemspec
