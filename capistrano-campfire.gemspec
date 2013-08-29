@@ -5,7 +5,7 @@ require "capistrano/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "capistrano-campfire"
-  spec.version       = "0.2.1"
+  spec.version       = Capistrano::Campfire::VERSION
   spec.authors       = ["Joshua Nichols"]
   spec.email         = "josh@technicalpickles.com"
   spec.date          = "2013-08-28"
