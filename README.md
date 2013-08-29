@@ -1,0 +1,67 @@
+# capistrano-campfire
+
+capistrano-campfire is a really tiny library to expose a Campfire room to
+Capistrao.
+
+Specifically, you configure some `campfire_options` about the room, and then
+you magically get access to a `campfire_room`. It's just a `Tinder::Campfire`
+instance, so you can do whatever you would normally with that.
+
+Install it the usual way:
+
+```
+gem install capistrano-campfire
+```
+
+And here's a quick example for your `config/deploy.rb`:
+
+```ruby
+require 'capistrano/campfire'
+
+set :campfire_options, :account => 'zim',
+  :room => 'World Conquest',
+  :token => '001000101110101001011112',
+  :ssl => true
+
+task :ohai do
+  campfire_room.speak 'o hai'
+end
+```
+
+You can also be posting to multiple campfire rooms/accounts.
+
+```ruby
+require 'capistrano/campfire'
+
+set :campfire_options,
+  :rooms => [{
+    :account => 'zim',
+    :room => 'World Conquest',
+    :token => '001000101110101001011112',
+  },
+  {
+    :account => 'swolleneyeballnetwork',
+    :room => 'Agents',
+    :token => '2001000101110101001011110',
+  }],
+  :ssl => true
+
+task :ohai do
+  campfire_rooms.speak 'o hai'
+end
+```
+Instead of the `room` option, you can pass the `room_id` if your room name
+contains some special characters.
+
+
+## Note on Patches/Pull Requests
+
+* Fork the project.
+* Make your feature addition or bug fix.
+* Add tests for it. This is important so I don't break it in a
+  future version unintentionally.
+* Send me a pull request. Bonus points for topic branches.
+
+## Copyright
+
+Copyright (c) 2010 Joshua Nichols. See LICENSE for details.
