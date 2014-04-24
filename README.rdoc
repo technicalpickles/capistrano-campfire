@@ -1,6 +1,6 @@
 = capistrano-campfire
 
-capistrano-campfire is a really tiny library to expose a Campfire room to Capistrao.
+capistrano-campfire is a really tiny library to expose a Campfire room to Capistrano.
 
 Specifically, you configure some `campfire_options` about the room, and then you magically get access to a `campfire_room`. It's just a `Tinder::Campfire` instance, so you can do whatever you would normally with that.
 
